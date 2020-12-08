@@ -1,0 +1,15 @@
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+
+
+        <textarea Style="border-color: rgb(46, 157, 177); width:613px; height: 117px;" class="form-control" placeholder="Type your Question...." formControlName="comment" [ngClass]="{ 'is-invalid': submitted && commentForm.controls['comment'].errors }"></textarea>
+        <div class="invalid-feedback" *ngIf="submitted && commentForm.controls['comment'].errors">
+            <div *ngIf="commentForm.controls['comment'].errors.required">Comment is required</div>
+            <div *ngIf="commentForm.controls['comment'].errors.minlength">Comment must be at least 6 characters</div>
+            <div *ngIf="commentForm.controls['comment'].errors.maxlength">Comment must be at most 1000 characters</div>
+        </div>
+    </div>
+    <div class="form-group ml-auto">
+        <button [ngStyle]="cssStyle" type="submit" class="btn btn-success ">Ask New Question</button>
+    </div>
+</form>
